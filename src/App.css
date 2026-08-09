@@ -4,57 +4,89 @@
   padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #090909;
+:root {
+  font-family: Inter, Arial, sans-serif;
   color: #fff;
+  background: #050505;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #050505;
+  color: #fff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 200, 70, 0.13), transparent 28%),
+    radial-gradient(circle at 85% 25%, rgba(255, 180, 40, 0.08), transparent 25%),
+    radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.08), transparent 35%);
+  z-index: -1;
 }
 
 .app {
   min-height: 100vh;
+  overflow: hidden;
   background:
-    radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.12), transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.08), transparent 30%),
-    #090909;
+    linear-gradient(135deg, rgba(255,255,255,.015), transparent 40%),
+    #050505;
 }
 
+/* NAVBAR */
+
 .navbar {
-  height: 75px;
-  padding: 0 7%;
+  height: 78px;
+  padding: 0 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 100, .12);
+  background: rgba(5, 5, 5, .72);
+  backdrop-filter: blur(22px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #d4af37;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #fff3b0, #d4af37, #fff0a0);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .nav-links {
   display: flex;
   gap: 30px;
-  color: #ddd;
+  color: #aaa;
   font-size: 14px;
 }
 
 .nav-links span {
   cursor: pointer;
+  transition: .25s;
 }
 
 .nav-links span:hover {
-  color: #d4af37;
+  color: #e8c85a;
 }
+
+/* HERO */
 
 .hero {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1250px;
   margin: auto;
-  padding: 80px 0;
+  padding: 90px 0;
   display: grid;
-  grid-template-columns: 1fr 430px;
+  grid-template-columns: 1fr 440px;
   gap: 80px;
   align-items: center;
 }
@@ -62,72 +94,145 @@ body {
 .tag {
   color: #d4af37;
   letter-spacing: 3px;
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 18px;
 }
 
 .intro h1 {
-  font-size: clamp(45px, 6vw, 75px);
-  line-height: 1.05;
-  margin-bottom: 25px;
+  font-size: clamp(45px, 6vw, 78px);
+  line-height: 1;
+  letter-spacing: -3px;
+  margin-bottom: 28px;
 }
 
 .intro h1 span {
-  color: #d4af37;
+  display: block;
+  background: linear-gradient(90deg, #fff1a8, #d4af37, #9c7618);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .description {
-  max-width: 550px;
-  color: #aaa;
-  font-size: 18px;
-  line-height: 1.7;
+  max-width: 570px;
+  color: #999;
+  font-size: 17px;
+  line-height: 1.8;
 }
 
-.calculator {
-  padding: 35px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
+/* GLASS CALCULATOR */
+
+.calculator,
+.tool-card {
+  position: relative;
+  padding: 32px;
+  border: 1px solid rgba(255, 215, 100, .24);
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.09),
+      rgba(255,255,255,.025)
+    );
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.65),
+    inset 0 1px 0 rgba(255,255,255,.08);
+
+  transition: transform .3s, border-color .3s, box-shadow .3s;
 }
 
-.calculator h2 {
-  color: #d4af37;
-  margin-bottom: 30px;
+.calculator::before,
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255,215,100,.22),
+    transparent 35%,
+    transparent 70%,
+    rgba(212,175,55,.12)
+  );
 }
 
-.calculator label {
+.calculator:hover,
+.tool-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,215,100,.4);
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.75),
+    0 0 40px rgba(212,175,55,.07);
+}
+
+.calculator h2,
+.tool-card h2 {
+  color: #e4c45a;
+  margin-bottom: 28px;
+  font-size: 23px;
+}
+
+/* INPUTS */
+
+.calculator label,
+.tool-card label {
   display: block;
-  color: #ccc;
-  margin: 18px 0 8px;
-  font-size: 14px;
+  color: #bbb;
+  margin: 17px 0 8px;
+  font-size: 13px;
 }
 
 .calculator input,
-.calculator select {
+.calculator select,
+.tool-card input,
+.tool-card select {
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #444;
-  background: #111;
-  color: white;
+  padding: 14px 15px;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.38);
+  color: #fff;
   outline: none;
   font-size: 15px;
+  transition: .25s;
+}
+
+.calculator input::placeholder,
+.tool-card input::placeholder {
+  color: #666;
 }
 
 .calculator input:focus,
-.calculator select:focus {
+.calculator select:focus,
+.tool-card input:focus,
+.tool-card select:focus {
   border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212,175,55,.08);
 }
+
+/* RESULT */
 
 .result {
   margin-top: 25px;
-  padding: 22px;
-  border-radius: 12px;
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 23px;
+  border-radius: 17px;
   text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(212,175,55,.16),
+      rgba(212,175,55,.035)
+    );
+
+  border: 1px solid rgba(212,175,55,.35);
+  box-shadow: inset 0 1px rgba(255,255,255,.05);
 }
 
 .result small {
@@ -137,137 +242,90 @@ body {
 }
 
 .result strong {
-  color: #d4af37;
+  color: #f0d76b;
   font-size: 30px;
+  text-shadow: 0 0 25px rgba(212,175,55,.2);
 }
 
-.note {
+.breakdown {
   margin-top: 15px;
-  color: #777;
-  font-size: 11px;
-  line-height: 1.5;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.8;
 }
 
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #666;
-  border-top: 1px solid #222;
-}
+/* TOOLS */
 
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 50px 0;
-    gap: 40px;
-  }
-
-  .intro h1 {
-    font-size: 48px;
-  }
-
-  .calculator {
-    padding: 25px;
-  }
-}
 .tools {
   width: 90%;
-  max-width: 1200px;
-  margin: 40px auto 80px;
+  max-width: 1250px;
+  margin: 20px auto 90px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
-.tool-card {
-  padding: 35px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-
-.tool-card h2 {
-  color: #d4af37;
-  margin: 15px 0;
-}
-
-.tool-card label {
-  display: block;
-  color: #ccc;
-  margin: 18px 0 8px;
-  font-size: 14px;
-}
-
-.tool-card input,
-.tool-card select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #444;
-  background: #111;
-  color: white;
-  outline: none;
-  font-size: 15px;
-}
-
-.tool-card input:focus,
-.tool-card select:focus {
-  border-color: #d4af37;
+.tools .tool-card:last-child {
+  grid-column: span 2;
 }
 
 .purity-result {
   margin-top: 20px;
   padding: 18px;
-  border-radius: 12px;
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 15px;
+  background: rgba(212,175,55,.055);
+  border: 1px solid rgba(212,175,55,.18);
 }
 
 .purity-result p {
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
-  color: #aaa;
+  color: #999;
 }
 
 .purity-result strong {
-  color: #d4af37;
+  color: #e4c45a;
 }
+
+/* INFO */
 
 .info {
   width: 90%;
-  max-width: 1000px;
-  margin: 0 auto 60px;
+  max-width: 1100px;
+  margin: 0 auto 70px;
   text-align: center;
 }
 
 .info h2 {
-  color: #d4af37;
-  font-size: 35px;
-  margin-bottom: 10px;
+  color: #e4c45a;
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 
-.info p {
-  color: #999;
+.info > p {
+  color: #777;
 }
 
 .features {
-  margin-top: 30px;
+  margin-top: 35px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .features div {
-  padding: 25px;
-  border: 1px solid #292929;
-  border-radius: 15px;
-  background: #111;
+  padding: 27px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  background: rgba(255,255,255,.025);
+  backdrop-filter: blur(8px);
+  transition: .3s;
+}
+
+.features div:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212,175,55,.3);
 }
 
 .features h3 {
@@ -275,12 +333,343 @@ footer {
   margin-bottom: 10px;
 }
 
+.features p {
+  color: #777;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #555;
+  border-top: 1px solid rgba(255,255,255,.07);
+  font-size: 12px;
+}
+
+/* MOBILE */
+
 @media (max-width: 800px) {
+  .navbar {
+    height: 68px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 0;
+    gap: 45px;
+  }
+
+  .intro h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
+  .calculator,
+  .tool-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
   .tools {
     grid-template-columns: 1fr;
   }
 
+  .tools .tool-card:last-child {
+    grid-column: span 1;
+  }
+
   .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calculator-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: #9c853b;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d4af37;
+  box-shadow: 0 0 12px rgba(212,175,55,.8);
+}
+
+.premium-badge {
+  margin-left: auto;
+  padding: 5px 8px;
+  border: 1px solid rgba(212,175,55,.25);
+  border-radius: 20px;
+  color: #d4af37;
+  background: rgba(212,175,55,.06);
+  letter-spacing: 1px;
+}
+
+.calculator h2 {
+  font-size: 25px;
+  letter-spacing: -.5px;
+}
+
+.calculator input,
+.calculator select,
+.tool-card input,
+.tool-card select {
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.calculator input:hover,
+.calculator select:hover,
+.tool-card input:hover,
+.tool-card select:hover {
+  background: rgba(255,255,255,.055);
+  border-color: rgba(212,175,55,.28);
+}
+
+.result {
+  position: relative;
+  overflow: hidden;
+}
+
+.result::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  right: -70px;
+  top: -70px;
+  border-radius: 50%;
+  background: rgba(212,175,55,.10);
+  filter: blur(25px);
+  pointer-events: none;
+}
+
+/* PREMIUM HERO LIGHT */
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  left: -120px;
+  top: 40px;
+  border-radius: 50%;
+  background: rgba(212,175,55,.055);
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+}
+
+.intro .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 13px;
+  border: 1px solid rgba(212,175,55,.2);
+  border-radius: 30px;
+  background: rgba(212,175,55,.045);
+}
+
+.intro h1 {
+  text-shadow: 0 15px 45px rgba(0,0,0,.7);
+}
+
+.intro h1 span {
+  position: relative;
+}
+
+.intro h1 span::after {
+  content: "";
+  display: block;
+  width: 85px;
+  height: 2px;
+  margin-top: 18px;
+  background: linear-gradient(90deg, #d4af37, transparent);
+  box-shadow: 0 0 12px rgba(212,175,55,.35);
+}
+
+.calculator {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot {
+    animation: livePulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    opacity: .65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+/* FUTURISTIC GOLD CONTROLS */
+
+.calculator input,
+.calculator select,
+.tool-card input,
+.tool-card select {
+  min-height: 50px;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(0,0,0,.35)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 8px 25px rgba(0,0,0,.18);
+}
+
+.calculator input:focus,
+.calculator select:focus,
+.tool-card input:focus,
+.tool-card select:focus {
+  border-color: rgba(230,195,80,.75);
+  background: rgba(212,175,55,.045);
+  box-shadow:
+    0 0 0 3px rgba(212,175,55,.08),
+    0 0 22px rgba(212,175,55,.09),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.calculator select,
+.tool-card select {
+  cursor: pointer;
+}
+
+.calculator select option,
+.tool-card select option {
+  background: #111;
+  color: #fff;
+}
+
+.calculator label,
+.tool-card label {
+  letter-spacing: .3px;
+}
+
+.breakdown {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.breakdown p {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.result strong {
+  letter-spacing: -.5px;
+}
+
+@media (max-width: 800px) {
+  .calculator input,
+  .calculator select,
+  .tool-card input,
+  .tool-card select {
+    min-height: 52px;
+  }
+}
+
+/* GOLD MARKET */
+
+.gold-market {
+  width: 90%;
+  max-width: 1250px;
+  margin: 45px auto 0;
+  padding: 28px;
+  border: 1px solid rgba(212,175,55,.16);
+  border-radius: 26px;
+  background: rgba(255,255,255,.025);
+  backdrop-filter: blur(8px);
+}
+
+.market-heading {
+  margin-bottom: 25px;
+}
+
+.market-heading h2 {
+  margin: 5px 0 8px;
+  font-size: 28px;
+  color: #e4c45a;
+}
+
+.market-heading p {
+  color: #777;
+  font-size: 14px;
+}
+
+.market-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.market-card {
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(212,175,55,.16);
+  background: rgba(0,0,0,.25);
+  transition: .25s;
+}
+
+.market-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212,175,55,.35);
+}
+
+.market-card span,
+.market-card small {
+  display: block;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.market-card strong {
+  display: block;
+  margin: 12px 0 6px;
+  color: #f0d76b;
+  font-size: 27px;
+}
+
+@media (max-width: 800px) {
+  .gold-market {
+    padding: 22px;
+  }
+
+  .market-cards {
     grid-template-columns: 1fr;
   }
 }
