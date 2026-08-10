@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://goldcalc-india.vercel.app/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/22k-gold-calculator/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/24k-gold-calculator/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/18k-gold-calculator/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/silver-calculator/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/old-gold-calculator/</loc>
+</url>
+
+<url>
+<loc>https://goldcalc-india.vercel.app/gold-purity-calculator/</loc>
+</url>
+
 </urlset>
