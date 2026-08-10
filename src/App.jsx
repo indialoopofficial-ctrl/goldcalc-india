@@ -1,7 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
+    const [liveGoldRate, setLiveGoldRate] = useState(null);
+  const [liveSilverRate, setLiveSilverRate] = useState(null);
+  const [ratesLoading, setRatesLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/rates")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setLiveGoldRate(data.gold);
+          setLiveSilverRate(data.silver);
+        }
+      })
+      .catch((error) => {
+        console.error("Rates error:", error);
+      })
+      .finally(() => {
+        setRatesLoading(false);
+      });
+  }, []);
   const [weight, setWeight] = useState("");
   const [rate, setRate] = useState("");
   const [purity, setPurity] = useState("22");
@@ -128,13 +148,27 @@ function App() {
             <option value="14">14K — 58.5%</option>
           </select>
 
-          <label>Gold Rate (₹ per gram)</label>
           <input
-            type="number"
-            placeholder="Example: 10000"
-            value={rate}
-            onChange={(e) => setRate(e.target.value)}
-          />
+  type="number"
+  placeholder={
+    ratesLoading
+      ? "Loading live gold rate..."
+      : `Live rate ₹${Number(liveGoldRate || 0).toLocaleString("en-IN", {
+          maximumFractionDigits: 2,
+        })}/g`
+  }
+  value={rate}
+  onChange={(e) => setRate(e.target.value)}
+/>
+
+{liveGoldRate && (
+  <small style={{ color: "#d4af37" }}>
+    Live Gold Rate: ₹
+    {Number(liveGoldRate).toLocaleString("en-IN", {
+      maximumFractionDigits: 2,
+    })}/g
+  </small>
+)}
 
           <label>Making Charges (₹ per gram)</label>
           <input
@@ -247,13 +281,27 @@ function App() {
             onChange={(e) => setSilverWeight(e.target.value)}
           />
 
-          <label>Silver Rate (₹ per gram)</label>
           <input
-            type="number"
-            placeholder="Example: 100"
-            value={silverRate}
-            onChange={(e) => setSilverRate(e.target.value)}
-          />
+  type="number"
+  placeholder={
+    ratesLoading
+      ? "Loading live silver rate..."
+      : `Live rate ₹${Number(liveSilverRate || 0).toLocaleString("en-IN", {
+          maximumFractionDigits: 2,
+        })}/g`
+  }
+  value={silverRate}
+  onChange={(e) => setSilverRate(e.target.value)}
+/>
+
+{liveSilverRate && (
+  <small style={{ color: "#d4af37" }}>
+    Live Silver Rate: ₹
+    {Number(liveSilverRate).toLocaleString("en-IN", {
+      maximumFractionDigits: 2,
+    })}/g
+  </small>
+)}
 
           <div className="result">
             <small>Estimated Silver Value</small>
