@@ -5,6 +5,32 @@ function App() {
     const [liveGoldRate, setLiveGoldRate] = useState(null);
   const [liveSilverRate, setLiveSilverRate] = useState(null);
   const [ratesLoading, setRatesLoading] = useState(true);
+  const [ratesError, setRatesError] = useState("");
+  const [lastUpdated, setLastUpdated] = useState(null);
+
+  const refreshRates = () => {
+    setRatesLoading(true);
+    setRatesError("");
+
+    fetch("/api/rates")
+      .then((response) => {
+        if (!response.ok) throw new Error("Rates API unavailable");
+        return response.json();
+      })
+      .then((data) => {
+        if (!data.success) throw new Error("Rates data unavailable");
+        setLiveGoldRate(data.gold);
+        setLiveSilverRate(data.silver);
+        setLastUpdated(new Date());
+      })
+      .catch((error) => {
+        console.error("Rates error:", error);
+        setRatesError("Live rates temporarily unavailable");
+      })
+      .finally(() => {
+        setRatesLoading(false);
+      });
+  };
 
   useEffect(() => {
     fetch("/api/rates")
@@ -149,6 +175,27 @@ function App() {
         </section>
 
         <section className="calculator">
+          <div className="rate-controls">
+            <button
+              type="button"
+              onClick={refreshRates}
+              disabled={ratesLoading}
+            >
+              {ratesLoading ? "Updating..." : "🔄 Refresh Rates"}
+            </button>
+
+            {lastUpdated && (
+              <small>
+                Updated: {lastUpdated.toLocaleTimeString("en-IN")}
+              </small>
+            )}
+
+            {ratesError && (
+              <small className="rate-error">
+                {ratesError}
+              </small>
+            )}
+          </div>
 
           <h2>Jewellery Bill Calculator</h2>
 
