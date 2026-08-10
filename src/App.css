@@ -529,3 +529,44 @@ footer p:first-child {
     width: 100%;
   }
 }
+
+/* Premium FAQ Section */
+.faq {
+  margin-top: 32px;
+  padding: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.faq h2 {
+  margin-bottom: 22px;
+}
+
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.faq-item p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.82;
+}
+
+@media (max-width: 600px) {
+  .faq {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+}
+

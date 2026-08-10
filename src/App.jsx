@@ -483,6 +483,51 @@ function App() {
         </div>
       </section>
 
+      <section className="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <div className="faq-item">
+          <h3>What is a Gold Calculator?</h3>
+          <p>
+            GoldCalc India helps you estimate jewellery value using gold weight,
+            purity, gold rate, making charges, wastage and GST.
+          </p>
+        </div>
+
+        <div className="faq-item">
+          <h3>How is 22K gold price calculated?</h3>
+          <p>
+            The estimated value depends on the gold weight, current gold rate
+            and 22K purity, along with applicable jewellery charges and GST.
+          </p>
+        </div>
+
+        <div className="faq-item">
+          <h3>Can I calculate silver value?</h3>
+          <p>
+            Yes. Enter the silver weight and silver rate to estimate the value
+            of your silver.
+          </p>
+        </div>
+
+        <div className="faq-item">
+          <h3>Can I calculate old gold value?</h3>
+          <p>
+            Yes. GoldCalc India includes an old gold calculator for estimating
+            gross value and deduction based on the details you enter.
+          </p>
+        </div>
+
+        <div className="faq-item">
+          <h3>Is the calculated jewellery price exact?</h3>
+          <p>
+            No. The calculator provides an estimate. Final jewellery prices
+            may vary depending on the jeweller, market rate, making charges,
+            taxes and other applicable charges.
+          </p>
+        </div>
+      </section>
+
       <footer>
         <p>© 2026 GoldCalc India</p>
         <p>Calculations are estimates only.</p>
