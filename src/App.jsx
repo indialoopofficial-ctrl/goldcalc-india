@@ -95,6 +95,29 @@ function App() {
     <div className="app">
 
       <nav className="navbar">
+        <div className="live-rates">
+  <div className="live-rate">
+    <span>🥇 Gold</span>
+    <strong>
+      {liveGoldRate
+        ? `₹${Number(liveGoldRate).toLocaleString("en-IN", {
+            maximumFractionDigits: 2,
+          })}/g`
+        : "Loading..."}
+    </strong>
+  </div>
+
+  <div className="live-rate">
+    <span>🥈 Silver</span>
+    <strong>
+      {liveSilverRate
+        ? `₹${Number(liveSilverRate).toLocaleString("en-IN", {
+            maximumFractionDigits: 2,
+          })}/g`
+        : "Loading..."}
+    </strong>
+  </div>
+</div>
         <div className="logo">GoldCalc India</div>
 
         <div className="nav-links">

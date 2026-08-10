@@ -445,3 +445,33 @@ footer p:first-child {
     font-size: 25px;
   }
 }
+.live-rates {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-rate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.06);
+  font-size: 12px;
+}
+
+.live-rate span {
+  color: #aaa;
+}
+
+.live-rate strong {
+  color: #f5d77a;
+}
+
+@media (max-width: 700px) {
+  .live-rates {
+    display: none;
+  }
+}
