@@ -483,6 +483,18 @@ function App() {
         </div>
       </section>
 
+      <section className="seo-links">
+        <h2>Popular Gold & Silver Calculators</h2>
+        <ul>
+          <li><a href="/18k-gold-calculator/">18K Gold Calculator</a></li>
+          <li><a href="/22k-gold-calculator/">22K Gold Calculator</a></li>
+          <li><a href="/24k-gold-calculator/">24K Gold Calculator</a></li>
+          <li><a href="/silver-calculator/">Silver Calculator</a></li>
+          <li><a href="/old-gold-calculator/">Old Gold Calculator</a></li>
+          <li><a href="/gold-purity-calculator/">Gold Purity Calculator</a></li>
+        </ul>
+      </section>
+
       <section className="faq">
         <h2>Frequently Asked Questions</h2>
 
