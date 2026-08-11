@@ -6,15 +6,15 @@
   </url>
 
   <url>
-    <loc>https://goldcalc-india.vercel.app/18k-gold-calculator/</loc>
-  </url>
-
-  <url>
     <loc>https://goldcalc-india.vercel.app/22k-gold-calculator/</loc>
   </url>
 
   <url>
     <loc>https://goldcalc-india.vercel.app/24k-gold-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://goldcalc-india.vercel.app/18k-gold-calculator/</loc>
   </url>
 
   <url>
@@ -27,6 +27,22 @@
 
   <url>
     <loc>https://goldcalc-india.vercel.app/gold-purity-calculator/</loc>
+  </url>
+
+  <url>
+    <loc>https://goldcalc-india.vercel.app/about/</loc>
+  </url>
+
+  <url>
+    <loc>https://goldcalc-india.vercel.app/contact/</loc>
+  </url>
+
+  <url>
+    <loc>https://goldcalc-india.vercel.app/privacy-policy/</loc>
+  </url>
+
+  <url>
+    <loc>https://goldcalc-india.vercel.app/terms/</loc>
   </url>
 
 </urlset>

@@ -543,6 +543,13 @@ function App() {
       <footer>
         <p>© 2026 GoldCalc India</p>
         <p>Calculations are estimates only.</p>
+
+        <nav className="footer-links" aria-label="Footer navigation">
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms/">Terms &amp; Conditions</a>
+        </nav>
       </footer>
 
     </div>
